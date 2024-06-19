@@ -4,15 +4,17 @@ const mongoDB = require('./db');
 const createUserRoutes = require('./Routes/CreateUser');
 const displayDataRoutes = require('./Routes/DisplayData');
 const careerDataRoutes = require('./Routes/CareerData');
-
+require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
 // Connect to MongoDB
 mongoDB();
-
+const corsOptions = {
+  origin: "http://localhost:3000"
+}
 // Middleware
-app.use(cors()); // Using cors middleware
+app.use(cors(corsOptions)); // Using cors middleware
 app.use(express.json()); // For parsing application/json
 
 // Routes
@@ -22,7 +24,7 @@ app.use('/api', careerDataRoutes);
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.status(201).send('Hello World!');
 });
 
 // Start server
