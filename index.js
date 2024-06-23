@@ -7,7 +7,7 @@ const careerDataRoutes = require('./Routes/CareerData');
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
-const apiUrl =  "https://careerhunt.onrender.com" ||  "http://localhost:3000";
+const apiUrl = "https://careerhunt.onrender.com";
 
 // Connect to MongoDB
 mongoDB();
